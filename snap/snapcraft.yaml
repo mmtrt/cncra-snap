@@ -1,30 +1,34 @@
-name: cnctsun
-version: '1'
-summary: Tiberian Sun is a real-time strategy game.
+name: cncra
+version: '1.0'
+summary: C&C: Red Alert is a real-time strategy game.
 description: |
- Tiberian Sun is a real-time strategy video game developed by Westwood Studios and released in 1999. The main storyline follows the second major war between the Global Defense Initiative (GDI) of the United Nations, and the global terrorist organization known as the Brotherhood of Nod. The story takes place 30 years after the GDI had won the First Tiberium War in Command & Conquer.
+ Command & Conquer: Red Alert is a real-time strategy game and second release in the Command & Conquer series, having been released in October of 1996. it is also the first game in the Red Alert sub-series that takes an alternative path/story of the main Command & Conquer series.
+
+ C&C: Red Alert is set prior to the events in Command & Conquer in an alternative history where the Soviet Union has invaded Eastern Europe and started a new war against the remaining European countries and the United States.
+
+ When the game was released in 1996 it was praised by fans and critics alike for its intuitive user interface and gameplay that was ahead of its time. New, groundbreaking features introduced with the release of Command & Conquer Red Alert included the ability to queue commands, create and assign multiple units into a single group by a simple drag and select, as well as multiple factions with different strengths and weaknesses. These features have since become standard for the genre.
 
 grade: stable
-confinement: strict
+confinement: devmode
 architectures:
   - build-on: amd64
     run-on: [amd64, i386]
 
 apps:
-  cnctsun:
+  cncra:
     command: |
       bin/sommelier "$(
       if [ ! -d $WINEPREFIX ]; then
       mkdir -p $WINEPREFIX && touch $WINEPREFIX/Launcher.exe && find $WINEPREFIX/ -type f -name *.exe | grep -e Launcher.exe
       elif [ -d $WINEPREFIX ]; then
-      find $WINEPREFIX/ -type f -name *.exe | grep -e Launcher.exe
+      find $WINEPREFIX/ -type f -name *.exe | grep -e RA1MPLauncher.exe -e RA95Launcher.exe
       fi
       )"
     environment:
       WINEPREFIX: "$SNAP_USER_COMMON/.wine"
       DLLOVERRIDES: "mshtml=" # Prevent pop-ups about Wine Gecko
-      INSTALL_URL_TS: "http://tore29.com/tsins/TSinstaller.exe" # cnctsun full game setup
-      INSTALL_URL_CNC: "https://downloads.cncnet.org/TiberianSun_Online_Installer.exe" # cnctsun multiplayer only setup
+      INSTALL_URL_RA: "https://downloads.cncnet.org/RA1installer.exe" # cncra full game setup
+      INSTALL_URL_CNC: "https://downloads.cncnet.org/RedAlert1_Online_Installer.exe" # cncra multiplayer only setup
       MONO_URL: "https://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi"
       TRICKS: "dotnet20"
       VIRTDESKTOP: 0
@@ -106,7 +110,7 @@ parts:
 
       WINE_REL="wine-devel"
       WINE_ARCH="i386"
-      WINE_VER="3.11.0"
+      WINE_VER="3.12.0"
 
       # wget and dpkg extract the wine debs
       DEB_URLS="https://dl.winehq.org/wine-builds/ubuntu/pool/main/${WINE_REL}-${WINE_ARCH}_${WINE_VER}~xenial_${WINE_ARCH}.deb \
@@ -206,7 +210,7 @@ parts:
     after:
       - enable-i386
 
-  cnctsun:
+  cncra:
     plugin: dump
     build-attributes:
       - no-system-libraries

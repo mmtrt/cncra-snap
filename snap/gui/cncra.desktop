@@ -1,12 +1,12 @@
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
-Name=C&C Tiberian Sun
+Name=C&C: Red Alert
 Comment=
-Exec=cnctsun
-Icon=${SNAP}/meta/gui/cnctsun.png
+Exec=cncra
+Icon=${SNAP}/meta/gui/cncra.png
 Categories=Game;
 Terminal=false
 StartupNotify=true
-StartupWMClass=Launcher.exe,TSMPLauncher.exe
+StartupWMClass=RA1MPLauncher.exe,RA95Launcher.exe
 Keywords=game

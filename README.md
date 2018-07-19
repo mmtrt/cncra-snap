@@ -1,22 +1,22 @@
 <h1 align="center">
-  <img src="snap/gui/cnctsun.png" alt="C&C: Tiberian Sun">
+  <img src="snap/gui/cncra.png" alt="C&C: Red Alert">
   <br />
-  C&C: Tiberian Sun
+  C&C: Red Alert
 </h1>
 
-<p align="center"><b>This is the snap for C&C: Tiberian Sun</b>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the snap for C&C: Red Alert</b>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 <p align="center">Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with :gift_heart: by Snapcrafters</p>
 
 ## Install
 
-    snap install cnctsun --edge
-    snap connect cnctsun:process-control
+    snap install cncra --edge
+    snap connect cncra:process-control
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
-![C&C: Tiberian Sun](screenshot.png?raw=true "C&C: Tiberian Sun")
+![C&C: Red Alert](screenshot.png?raw=true "C&C: Red Alert")
 
 ## Reusing this snap
 
