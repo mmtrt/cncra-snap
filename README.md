@@ -11,7 +11,7 @@ distributions.</p>
 
 ## Install
 
-    snap install cncra --edge --devmode
+    snap install cncra
     snap connect cncra:process-control
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
