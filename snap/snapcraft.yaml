@@ -9,7 +9,7 @@ description: |
  When the game was released in 1996 it was praised by fans and critics alike for its intuitive user interface and gameplay that was ahead of its time. New, groundbreaking features introduced with the release of Command & Conquer Red Alert included the ability to queue commands, create and assign multiple units into a single group by a simple drag and select, as well as multiple factions with different strengths and weaknesses. These features have since become standard for the genre.
 
 grade: stable
-confinement: devmode
+confinement: strict
 architectures:
   - build-on: amd64
     run-on: [amd64, i386]
