@@ -83,13 +83,14 @@ function install_cnc() {
       --button="Install:0" --button="Exit:1" \
       --text "Select Game Version Type:" \
       --entry-text \
-      "Full Game (Singleplayer + Multiplayer)" "Multiplayer")
+        "Multiplayer" "")
+      # "Full Game (Singleplayer + Multiplayer)" "Multiplayer")
   ret=$?
 
   [[ $ret -eq 1 ]] && exit 0
 
   case $action in
-      Full*) cmd=$(install_ra) ;;
+      # Full*) cmd=$(install_ra) ;;
       Multi*) cmd=$(install_cnc) ;;
       *) exit 1 ;;    
   esac
