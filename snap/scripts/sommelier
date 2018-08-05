@@ -16,7 +16,7 @@ function install_app() {
 
 function find_game() {
   # assign game exe path & name via find
-  WINE_EXE="$(find $WINEPREFIX/ -type f -name '*.exe' | grep -e RA1MPLauncher.exe -e RA95Launcher.exe)"
+  WINE_EXE="$(find $WINEPREFIX/ -type f \( -name 'RA1MPLauncher.exe' -o -name 'RA95Launcher.exe' \))"
   WINE_DIR=$(dirname "${WINE_EXE}")
 }
 
