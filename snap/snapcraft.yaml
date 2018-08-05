@@ -233,7 +233,6 @@ parts:
       - yad:i386                # winetricks
     override-build: |
       snapcraftctl build
-      cp -R -p ../../../snap/fixes $SNAPCRAFT_PART_INSTALL
       rm -rf $SNAPCRAFT_PART_INSTALL/etc/init
       rm -rf $SNAPCRAFT_PART_INSTALL/etc/init.d
       rm -rf $SNAPCRAFT_PART_INSTALL/etc/logrotate.d
