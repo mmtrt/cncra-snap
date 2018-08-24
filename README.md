@@ -12,7 +12,7 @@ distributions.</p>
 ## Install
 
     snap install cncra
-    snap connect cncra:process-control
+    snap connect cncra:wine-platform-i386 wine-platform-i386:wine-base-devel
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
