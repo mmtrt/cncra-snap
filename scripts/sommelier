@@ -61,7 +61,7 @@ function install_ra() {
     env WINEARCH="${WINEARCH}" WINEPREFIX="${WINEPREFIX}" "${WINELOADER}" "${TMPDIR}/${INSTALL_EXE_RA}" /silent
     # Create Game dir without space & move files to it so that find command finds game exe properly
     mkdir -p "$WINEPREFIX/drive_c/Games/RedAlert"
-    cp -R -p "$WINEPREFIX/drive_c/Games/Red Alert/"* "$WINEPREFIX/drive_c/Games/RedAlert"
+    cp -r --preserve=mode "$WINEPREFIX/drive_c/Games/Red Alert/"* "$WINEPREFIX/drive_c/Games/RedAlert"
     # Removes the cached installers & files
     rm -rf "$WINEPREFIX/drive_c/Games/Red Alert/"
     rm -v "${TMPDIR}/${INSTALL_EXE_RA}"
@@ -84,7 +84,7 @@ function install_cnc() {
     env WINEARCH="${WINEARCH}" WINEPREFIX="${WINEPREFIX}" "${WINELOADER}" "${TMPDIR}/${INSTALL_EXE_CNC}" /silent
     # Copy game files to $WINEPREFIX
     mkdir -p "${WINEPREFIX}/drive_c/Games/CnCNet/"
-    cp -R -p "${TMPDIR}/RedAlert1_Online" "${WINEPREFIX}/drive_c/Games/CnCNet/"
+    cp -r --preserve=mode "${TMPDIR}/RedAlert1_Online" "${WINEPREFIX}/drive_c/Games/CnCNet/"
     # Remove Game install from tmp
     rm -r "${TMPDIR}/RedAlert1_Online"
     # Removes the cached installers
