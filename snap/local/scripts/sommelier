@@ -388,8 +388,8 @@ if [ $needs_update = true ]; then
     ln -sf $SNAP/data-dir/themes $XDG_DATA_HOME
     ln -sfn $SNAP/data-dir/themes $SNAP_USER_DATA/.themes
   else
-    ln -sf $RUNTIME/usr/share/themes $XDG_DATA_HOME
-    ln -sfn $RUNTIME/usr/share/themes $SNAP_USER_DATA/.themes
+    ln -sf $WPR/usr/share/themes $XDG_DATA_HOME
+    ln -sfn $WPR/usr/share/themes $SNAP_USER_DATA/.themes
   fi
 fi
 
