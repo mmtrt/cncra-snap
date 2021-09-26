@@ -40,6 +40,7 @@ environment:
 
 apps:
   cncra:
+    extensions: [ gnome-3-28 ]
     command: |
       bin/sommelier run-exe
     environment:
@@ -67,7 +68,7 @@ apps:
 
 parts:
   cncra:
-    plugin: dump
+    plugin: nil
     source: ./snap/local/src
     override-build: |
       snapcraftctl build
