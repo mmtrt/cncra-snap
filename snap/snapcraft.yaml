@@ -44,8 +44,8 @@ apps:
     command: |
       bin/sommelier run-exe
     environment:
-      RUN_EXE: |
-       "$(find $WINEPREFIX/ -type f \( -name 'RA1MPLauncher.exe' -o -name 'RA95Launcher.exe' \) 2>/dev/null)"
+      RUN_EXE: "$WINEPREFIX/drive_c/Games/CnCNet/RedAlert1_Online/RA1MPLauncher.exe"
+      RUN_EXE_2: "$WINEPREFIX/drive_c/Games/RedAlert/RA95Launcher.exe"
     plugs:
       - home
       - network
@@ -82,4 +82,4 @@ parts:
   sommelier:
     plugin: make
     source: https://github.com/mmtrt/sommelier-core.git
-    source-branch: "tmp"
+    source-branch: "multi-exe-patch"
