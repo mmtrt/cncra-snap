@@ -8,7 +8,7 @@ function install_ra() {
     # Downloads a file with progress using wget and yad
     wget "${INSTALL_URL_RA}" -O "${TMPDIR}/${INSTALL_EXE_RA}" 2>&1 | \
     perl -p -e '$| = 1; s/^.* +([0-9]+%) +([0-9,.]+[GMKB]) +([0-9hms,.]+).*$/\1\n# Downloading... \2 (\3)/' | \
-    yad --progress --title="${INSTALL_EXE_RA}" --width=400 --center --no-buttons --auto-close --auto-kill --on-top --no-escape
+    yad --progress --title="${INSTALL_EXE_RA}" --width=400 --center --no-buttons --auto-close --auto-kill --on-top --no-escape 2>/dev/null
     # Installs the wine application
     env WINEARCH="${WINEARCH}" WINEPREFIX="${WINEPREFIX}" "${WINELOADER}" "${TMPDIR}/${INSTALL_EXE_RA}"
     # Create Game dir without space & move files to it so that find command finds game exe properly
@@ -30,7 +30,7 @@ function install_cnc() {
     # Downloads a file with progress using wget and yad
     wget "${INSTALL_URL_CNC}" -O "${TMPDIR}/${INSTALL_EXE_CNC}" 2>&1 | \
     perl -p -e '$| = 1; s/^.* +([0-9]+%) +([0-9,.]+[GMKB]) +([0-9hms,.]+).*$/\1\n# Downloading... \2 (\3)/' | \
-    yad --progress --title="${INSTALL_EXE_CNC}" --width=400 --center --no-buttons --auto-close --auto-kill --on-top --no-escape
+    yad --progress --title="${INSTALL_EXE_CNC}" --width=400 --center --no-buttons --auto-close --auto-kill --on-top --no-escape 2>/dev/null
     # Installs the wine application
     env WINEARCH="${WINEARCH}" WINEPREFIX="${WINEPREFIX}" "${WINELOADER}" "${TMPDIR}/${INSTALL_EXE_CNC}" /silent
     # Copy game files to $WINEPREFIX
@@ -50,7 +50,7 @@ function install_cnc() {
       --button="Install:0" --button="Exit:1" \
       --text "Select Game Version Type:" \
       --entry-text \
-      "Full Game (Singleplayer + Multiplayer)" "Multiplayer")
+      "Full Game (Singleplayer + Multiplayer)" "Multiplayer" 2>/dev/null)
   ret=$?
 
   [[ $ret -eq 1 ]] && exit 0
