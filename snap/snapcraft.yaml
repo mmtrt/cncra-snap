@@ -36,6 +36,7 @@ environment:
   TRICKS: "dotnet20"
   NO_AT_BRIDGE: 1
   SOMMELIER_INSTALL_MONO: 1
+  SOMMELIER_NO_THEME: 1
   SYSTEM_WGETRC: $SNAP/wine-runtime/etc/wgetrc
 
 apps:
@@ -77,7 +78,7 @@ parts:
     stage:
       - sommelier
 
-  # The sommelier script helps you snap Windows applications using Wine. It 
+  # The sommelier script helps you snap Windows applications using Wine. It
   # initializes and configures Wine and installs the Windows application.
   sommelier:
     plugin: make
