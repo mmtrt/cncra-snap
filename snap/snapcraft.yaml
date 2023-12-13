@@ -13,19 +13,20 @@ grade: stable
 confinement: strict
 architectures:
   - build-on: amd64
-    run-on: [amd64, i386]
-base: core18
-compression: lzo
+base: core22
 
 plugs:
-  wine-runtime:
+  shmem:
+    interface: shared-memory
+    private: true
+  wine-runtime-c22:
     interface: content
     target: $SNAP/wine-runtime
-    default-provider: wine-platform-runtime
-  wine-5-stable:
+    default-provider: wine-platform-runtime-core22
+  wine-7-stable-c22:
     interface: content
     target: $SNAP/wine-platform
-    default-provider: wine-platform-5-stable
+    default-provider: wine-platform-7-stable-core22
 
 environment:
   WINEDLLOVERRIDES: "mshtml="    # Prevent pop-ups about Wine Gecko
@@ -38,32 +39,30 @@ environment:
   DISABLE_WAYLAND: 1
   SOMMELIER_INSTALL_MONO: 1
   SOMMELIER_NO_THEME: 1
-  SYSTEM_WGETRC: $SNAP/wine-runtime/etc/wgetrc
 
 apps:
   cncra:
-    extensions: [ gnome-3-28 ]
-    command: |
-      bin/sommelier run-exe
+    extensions: [gnome]
+    command: bin/sommelier run-exe
     environment:
       RUN_EXE: "$WINEPREFIX/drive_c/Games/CnCNet/RedAlert1_Online/RA1MPLauncher.exe"
       RUN_EXE_2: "$WINEPREFIX/drive_c/Games/RedAlert/RA95Launcher.exe"
     plugs:
+      - shmem
       - home
       - network
       - network-bind
-      - opengl
-      - audio-playback
 
   wine:
-    extensions: [ gnome-3-28 ]
-    command: bin/sommelier
+    extensions: [gnome]
+    command: bin/sommelier run-exe
     plugs:
+      - shmem
       - home
       - network
 
   winetricks:
-    extensions: [ gnome-3-28 ]
+    extensions: [gnome]
     command: bin/sommelier winetricks
     plugs:
       - network
@@ -73,9 +72,9 @@ parts:
     plugin: nil
     source: ./snap/local/src
     override-build: |
-      snapcraftctl build
+      craftctl default
       set -ex
-      mkdir -p sommelier/hooks ; mv pre-install sommelier/hooks ; cp -R -p sommelier $SNAPCRAFT_PART_INSTALL
+      mkdir -p sommelier/hooks ; mv pre-install sommelier/hooks ; cp -R -p sommelier $CRAFT_PART_INSTALL
     stage:
       - sommelier
 
@@ -84,11 +83,7 @@ parts:
   sommelier:
     plugin: make
     source: https://github.com/mmtrt/sommelier-core.git
-    source-branch: "multi-exe-patch"
-
-  # This reverts changes from https://github.com/snapcore/snapcraft/pull/3586
-  fix-fontconfig:
-    plugin: nil
-    after: [gnome-3-28-extension]
-    override-prime: |
-      sed -i '/snap-package/,+1d' $SNAPCRAFT_PRIME/snap/command-chain/desktop-launch
+    source-branch: "testc22"
+    build-packages:
+      - libc6-dev-i386
+      - gcc-multilib
