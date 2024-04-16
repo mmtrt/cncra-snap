@@ -55,7 +55,7 @@ apps:
 
   wine:
     extensions: [gnome]
-    command: bin/sommelier run-exe
+    command: bin/sommelier
     plugs:
       - shmem
       - home
